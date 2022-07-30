@@ -25,7 +25,7 @@ function getParam(name, url) {
 
 function pageLoad(target, Title) {
     const Element = document.createElement("iframe");
-    Element.src = "pages/" + target + ".html";
+    Element.src = "/pages/" + target + ".html";
     Element.addEventListener(("load") ,() => {
         document.title = Title;
     })
