@@ -17,7 +17,7 @@
             padding: 0;
         }
 
-        * {
+        *:not(.inMenu *) {
             color: rgb(74, 74, 74);
         }
 
@@ -46,17 +46,15 @@
             font-family: 'Poppins', sans-serif;
             padding-left: 30px;
             padding-right: 30px;
-            /* color: rgb(110, 110, 255); */
             display: inline-block;
         }
         header div.logo:hover, header div.menu i:hover {
             color: rgb(180, 180, 180);
-            outline: 2px solid rgb(180, 180, 180);
-            outline-offset: -5px;
             cursor: pointer;
         }
         header div.menu i:hover {
             outline-offset: 5px;
+            outline: 2px solid rgb(180, 180, 180);
         }
 
         header div.menu {
@@ -76,6 +74,37 @@
             display: none;
         }
 
+        header div.inMenu div.close {
+            position: fixed;
+            top: 30px;
+            left: auto;
+            right: 30px;
+            font-size: xx-large;
+            cursor: pointer;
+        }
+
+        header div.inMenu * {
+            color: #fff;
+        }
+
+        header div.inMenu .lists {
+            position: fixed;
+            text-align:center;
+            left: 50%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+        header div.inMenu .list {
+            font-size: xx-large;
+            text-align:center;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        header div.inMenu .list:hover {
+            border-bottom: 2px solid #fff;
+        }
+
         main {
             padding: 30px;
             padding-top: 70px;
@@ -84,10 +113,16 @@
 </head>
 <body>
     <header>
-        <div class="logo">BlogBooks</div>
+        <div class="logo">Logo</div>
         <div class="menu"><i class='bx bx-menu'></i></div>
         <div class="inMenu">
-            <div class="list"></div>
+            <div class="close"><i class='bx bx-x'></i></div>
+            <div class="lists">
+                <div class="list Home">Home</div>
+                <div class="list About">About</div>
+                <div class="list Blog">Blog</div>
+                <div class="list Community">Community</div>
+            </div>
         </div>
     </header>
     <main>
@@ -95,6 +130,15 @@
     </main>
     <!-- <script src="/script.js"></script> -->
     <script>
+        const siteTitle = " - name",
+              header = document.querySelector("header"),
+              openMenu = header.querySelector(".menu"),
+              inMenu = header.querySelector(".inMenu"),
+              logo = header.querySelector(".logo"),
+              closeMenu = inMenu.querySelector(".close");
+
+        const vanillaURL = location.origin + location.pathname;
+        
         // Page ID(Parameter)
         function getParam(name, url) {
             if (!url) url = window.location.href;
@@ -106,21 +150,36 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
+        logo.addEventListener("click", () => {
+            location.href = vanillaURL;
+        });
+
+        openMenu.addEventListener("click", () => {
+            inMenu.style.display = "block";
+        });
+        closeMenu.addEventListener("click", () => {
+            inMenu.style.display = "none";
+        })
+
         // Start Up
-        switch (getParam("page")) {
-            case null:
-            case "":
-                document.title = "Home - BlogBooks";
-                document.querySelector("main").innerHTML = "Hello, Welcome to here.";
-                break;
-            case "memo":
-                document.title = "memo[Test] - BlogBooks";
-                document.querySelector("main").innerHTML = "Hello, Welcome to here.";
-                break;
-            default:
-                document.title = "Error: 404 - BlogBooks";
-                document.querySelector("main").innerHTML = "Oops, Error 404...";
-                break;
+        window.onload = () => {
+            switch (getParam("page")) {
+                case null:
+                case "":
+                    document.title = "Home" + siteTitle;
+                    document.querySelector("main").innerHTML = "Hello, Welcome to here.";
+                    break;
+                case "memo":
+                    document.title = "memo[Test]" + siteTitle;
+                    document.querySelector("main").innerHTML = "<div contenteditable spellcheck='false'><b>Hello, This is memo.<br>Let us click on this!</b></div>";
+                    document.querySelector("main").setAttribute("style", "width: 500px");
+                    break;
+                default:
+                    document.title = "Error: 404" + siteTitle;
+                    document.querySelector("main").innerHTML = "Oops, Error 404...";
+                    break;
+            }
+            inMenu.style.display = "none";
         }
     </script>
 </body>
