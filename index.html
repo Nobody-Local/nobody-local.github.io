@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&display=swap');
+
+        html, body {
+            font-family: 'Zen Kurenaido', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            color: rgb(74, 74, 74);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border-bottom: 1px solid rgb(185, 185, 185);
+            display: flex;
+        }
+
+        header > * {
+            /* User Select */
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+
+            font-size: larger;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        header div.logo {
+            font-family: 'Poppins', sans-serif;
+            padding-left: 30px;
+            padding-right: 30px;
+            /* color: rgb(110, 110, 255); */
+            display: inline-block;
+        }
+        header div.logo:hover, header div.menu i:hover {
+            color: rgb(180, 180, 180);
+            outline: 2px solid rgb(180, 180, 180);
+            outline-offset: -5px;
+            cursor: pointer;
+        }
+        header div.menu i:hover {
+            outline-offset: 5px;
+        }
+
+        header div.menu {
+            font-size: x-large;
+            position: fixed;
+            left: auto;
+            right: 30px;
+        }
+
+        header div.inMenu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: none;
+        }
+
+        main {
+            padding: 30px;
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BlogBooks</div>
+        <div class="menu"><i class='bx bx-menu'></i></div>
+        <div class="inMenu">
+            <div class="list"></div>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <!-- <script src="/script.js"></script> -->
+    <script>
+        // Page ID(Parameter)
+        function getParam(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Start Up
+        switch (getParam("page")) {
+            case null:
+            case "":
+                document.title = "Home - BlogBooks";
+                document.querySelector("main").innerHTML = "Hello, Welcome to here.";
+                break;
+            case "memo":
+                document.title = "memo[Test] - BlogBooks";
+                document.querySelector("main").innerHTML = "Hello, Welcome to here.";
+                break;
+            default:
+                document.title = "Error: 404 - BlogBooks";
+                document.querySelector("main").innerHTML = "Oops, Error 404...";
+                break;
+        }
+    </script>
+</body>
+</html>
