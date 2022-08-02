@@ -135,7 +135,8 @@
               openMenu = header.querySelector(".menu"),
               inMenu = header.querySelector(".inMenu"),
               logo = header.querySelector(".logo"),
-              closeMenu = inMenu.querySelector(".close");
+              closeMenu = inMenu.querySelector(".close"),
+              inMenuLists = inMenu.querySelector(".lists");
 
         const vanillaURL = location.origin + location.pathname;
         
@@ -150,9 +151,22 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
+        // Teleport to URL
         logo.addEventListener("click", () => {
             location.href = vanillaURL;
         });
+        inMenuLists.querySelector(".Home").onclick = () => {
+            location.href = vanillaURL;
+        }
+        inMenuLists.querySelector(".About").onclick = () => {
+            location.href = vanillaURL + "?page=About";
+        }
+        inMenuLists.querySelector(".Blog").onclick = () => {
+            location.href = "https://blogbooks.net";
+        }
+        inMenuLists.querySelector(".Community").onclick = () => {
+            location.href = vanillaURL + "?page=Community";
+        }
 
         openMenu.addEventListener("click", () => {
             inMenu.style.display = "block";
@@ -174,6 +188,10 @@
                     document.querySelector("main").innerHTML = "<div contenteditable spellcheck='false'><b>Hello, This is memo.<br>Let us click on this!</b></div>";
                     document.querySelector("main").setAttribute("style", "width: 500px");
                     break;
+                case "about":
+                case "About":
+                    document.title = "About" + siteTitle;
+                    document.querySelector("main").innerHTML = "<h2>About</h2><div>Created(site) By harun<br>Group: CompassNetworkJP & BlogBooks</div>";
                 default:
                     document.title = "Error: 404" + siteTitle;
                     document.querySelector("main").innerHTML = "Oops, Error 404...";
