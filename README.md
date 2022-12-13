@@ -1,22 +1,23 @@
 # About
 
  ***WebSite for BlogBooks.***  
-URL: https://harunlog.github.io/WebSite/   
+URL: https://nobody-local.github.io   
 
-> [Public Repository(Open Source)]  
-> Created By harun.  
+> [Public Repository(Open Source)]   
+> Created By harun. & @Nobody-Local   
 
 # Detail
 
 ## Use Programming Languages  
 
 - HTML
+- CSS
 - JavaScript
 
 ## Community
 
 Discord Server:   
-[Compass Network JP](https://discord.gg/HAQUBPetrv)   
+[BlogBooks Community](https://discord.gg/BNWkVsmVCp)   
 
 Twitter:   
 [ChromePro(chromingpro)](https://twitter.com/ChromingPro)   
