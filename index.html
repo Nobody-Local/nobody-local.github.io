@@ -63,7 +63,7 @@
              * @param {string} name
              */
             paged(name) {
-                if (typeof name !== "String") return console.error("paged: name was not String"); 
+                if (typeof name !== "String") name = String(name);
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages${name}.md`)
                     .then(response => response.text())
