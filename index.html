@@ -63,6 +63,7 @@
              * @param {string} name
              */
             paged(name) {
+                if (location.pathname == ("/404" || "404")) return;
                 if (typeof name !== "String") name = String(name);
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages${name}.md`)
