@@ -23,15 +23,15 @@
 </head>
 <body>
     <header>
-        <div class="logo linked" data-paged="/Home">%SiteTitle%</div>
+        <div class="logo linked" data-paged="Home">%SiteTitle%</div>
         <div class="menu"><i class='bx bx-menu'></i></div>
         <div class="inMenu">
             <div class="close"><i class='bx bx-x'></i></div>
             <div class="lists">
-                <div class="list Home linked" data-paged="/Home">Home</div>
-                <div class="list About linked" data-paged="/About">About</div>
-                <div class="list Blog linked" data-paged="/Library">Blog</div>
-                <div class="list Community linked" data-paged="/Community">Community</div>
+                <div class="list Home linked" data-paged="Home">Home</div>
+                <div class="list About linked" data-paged="About">About</div>
+                <div class="list Blog linked" data-paged="Library">Blog</div>
+                <div class="list Community linked" data-paged="Community">Community</div>
             </div>
         </div>
     </header>
@@ -66,7 +66,7 @@
                 if (location.pathname == ("/404" || "404")) return;
                 if (typeof name !== "String") name = String(name);
                 document.title = "Connecting...";
-                fetch(`${location.origin}/pages${name}.md`)
+                fetch(`${location.origin}/pages/${name}.md`)
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
@@ -78,7 +78,7 @@
                         document.querySelector("main").innerHTML = markdown.parse(data);
                     })
                     .catch(e => {
-                        return this.paged("/404");
+                        return this.paged("404");
                     });
             }
         }
@@ -103,7 +103,7 @@
             })
             
             if (location.pathname == "/") {
-                $.paged("/Home");
+                $.paged("Home");
             } else {
                 $.paged(location.pathname);
             }
