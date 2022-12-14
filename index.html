@@ -17,8 +17,7 @@
     <script>
         const config = {
             title: "BlogBooks Community",
-            baseURL: location.origin,
-            pagesDir: "pages"
+            baseURL: location.origin
         }
     </script>
 </head>
@@ -65,10 +64,8 @@
              */
             paged(name) {
                 if (typeof name == "String") return console.error("paged: name was not String"); 
-                console.log(typeof name);
                 document.title = "Connecting...";
-                if (!String(name).startsWith("/")) name = "/" + name;
-                fetch(`${config.baseURL}/${config.pagesDir}${name}.md`)
+                fetch(`${location.origin}/pages${name}.md`)
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
@@ -105,7 +102,7 @@
             })
             
             if (location.pathname == ("/" || null)) {
-                $.paged("/Home")
+                $.paged("/Home");
             } else {
                 $.paged(location.pathname);
             }
