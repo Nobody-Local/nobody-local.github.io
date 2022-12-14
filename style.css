@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700&display=swap');
+
 html, body {
+    /* font-family: 'Zen Kurenaido', sans-serif; */
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+*:not(.inMenu *) {
+    color: rgb(74, 74, 74);
 }
 
 header {
@@ -10,10 +20,108 @@ header {
     width: 100%;
     background-color: #fff;
     border-bottom: 1px solid rgb(185, 185, 185);
+    display: flex;
+}
+
+header > * {
+    /* User Select */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px;
 }
 
 header div.logo {
+    font-family: 'Poppins', sans-serif;
     padding-left: 30px;
-    font-size: larger;
-    color: rgb(110, 110, 255);
+    padding-right: 30px;
+    display: inline-block;
+}
+
+header div.logo:hover, header div.menu i:hover {
+    color: rgb(180, 180, 180);
+    cursor: pointer;
+}
+
+header div.menu i:hover {
+    outline-offset: 5px;
+    outline: 2px solid rgb(180, 180, 180);
+}
+
+header div.menu {
+    font-size: x-large;
+    position: fixed;
+    left: auto;
+    right: 30px;
+}
+
+header div.inMenu {
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    font-family: 'Zen Kurenaido', sans-serif;
+}
+
+header div.inMenu div.close {
+    position: fixed;
+    top: 30px;
+    left: auto;
+    right: 30px;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+header div.inMenu * {
+    color: #fff;
+}
+
+header div.inMenu .lists {
+    position: fixed;
+    text-align:center;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+header div.inMenu .list {
+    font-size: xx-large;
+    text-align:center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+header div.inMenu .list:hover {
+    border-bottom: 2px solid #fff;
+}
+
+main {
+    padding: 30px;
+    padding-top: 70px;
+}
+
+footer {
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid rgb(185, 185, 185);
+    position: sticky;
+    top: 100vh;
+}
+body > footer {
+    position: sticky;
+    top: 100vh;
+}
+footer * {
+    color: rgb(185, 185, 185);
+}
+footer p {
+    text-align: right;
+    padding: 30px 30px;
 }
