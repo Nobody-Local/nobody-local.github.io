@@ -64,9 +64,9 @@
              * @param {string} name
              */
             paged(name) {
+                if (typeof name == "String") return console.error("paged: name was not String"); 
                 console.log(typeof name);
                 document.title = "Connecting...";
-                "/Home".startsWith
                 if (!String(name).startsWith("/")) name = "/" + name;
                 fetch(`${config.baseURL}/${config.pagesDir}${name}.md`)
                     .then(response => response.text())
