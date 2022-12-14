@@ -63,7 +63,7 @@
              * @param {string} name
              */
             paged(name) {
-                if (typeof name == "String") return console.error("paged: name was not String"); 
+                if (typeof name !== "String") return console.error("paged: name was not String"); 
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages${name}.md`)
                     .then(response => response.text())
@@ -101,7 +101,7 @@
                 })
             })
             
-            if (location.pathname == ("/" || null)) {
+            if (location.pathname == "/") {
                 $.paged("/Home");
             } else {
                 $.paged(location.pathname);
