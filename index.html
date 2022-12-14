@@ -88,7 +88,7 @@
             // Set menuBar
             document.querySelectorAll(".linked").forEach(Element => {
                 Element.addEventListener("click", () => {
-                    $.paged(Element.data-paged);
+                    $.paged(Element.getAttribute("data-paged"));
                 })
             })
             
