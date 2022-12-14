@@ -64,6 +64,7 @@
              * @param {string} name
              */
             paged(name) {
+                console.log(typeof name);
                 document.title = "Connecting...";
                 if (!name[0].startswith("/")) name = "/" + name;
                 fetch(`${config.baseURL}/${config.pagesDir}${name}.md`)
