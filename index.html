@@ -77,7 +77,7 @@
                         document.querySelector("main").innerHTML = markdown.parse(data);
                     })
                     .catch(e => {
-                        return this.paged("404");
+                        return this.paged("/404");
                     });
             }
         }
