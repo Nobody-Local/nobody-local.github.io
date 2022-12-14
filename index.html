@@ -60,14 +60,14 @@
                 if (!results[2]) return '';
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             },
-            paged(page) {
-                String(page);
+            paged(name) {
+                name = String(name);
                 document.title = "Connecting..."
-                if (!page.toString().startswith("/")) page = "/" + page;
-                fetch(`${config.baseURL}/${config.pagesDir}${page}.md`)
+                if (!name.toString().startswith("/")) name = "/" + name;
+                fetch(`${config.baseURL}/${config.pagesDir}${name}.md`)
                     .then(response => response.text())
                     .then(data => {
-                        history.pushState(null, null, page);
+                        history.pushState(null, null, name);
                         var meta = document.contents().filter(function() {
                             return this.nodeType === document.COMMENT_NODE;
                         });
