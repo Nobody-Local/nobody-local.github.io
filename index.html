@@ -60,10 +60,13 @@
                 if (!results[2]) return '';
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             },
+            /**
+             * @param {string} name
+             */
             paged(name) {
                 name = String(name);
-                document.title = "Connecting..."
-                if (!name.toString().startswith("/")) name = "/" + name;
+                document.title = "Connecting...";
+                if (!name.startswith("/")) name = "/" + name;
                 fetch(`${config.baseURL}/${config.pagesDir}${name}.md`)
                     .then(response => response.text())
                     .then(data => {
