@@ -13,18 +13,26 @@
 
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="style.css" rel="stylesheet">
+
+    <script>
+        const config = {
+            title: "BlogBooks Community",
+            baseURL: location.origin,
+            pagesDir: "pages"
+        }
+    </script>
 </head>
 <body>
     <header>
-        <div class="logo _/"></div>
+        <div class="logo linked" data-paged="/Home">%SiteTitle%</div>
         <div class="menu"><i class='bx bx-menu'></i></div>
         <div class="inMenu">
             <div class="close"><i class='bx bx-x'></i></div>
             <div class="lists">
-                <div class="list Home _/">Home</div>
-                <div class="list About _about">About</div>
-                <div class="list Blog _blog">Blog</div>
-                <div class="list Community _community">Community</div>
+                <div class="list Home linked" data-paged="/Home">Home</div>
+                <div class="list About linked" data-paged="/About">About</div>
+                <div class="list Blog linked" data-paged="/Library">Blog</div>
+                <div class="list Community linked" data-paged="/Community">Community</div>
             </div>
         </div>
     </header>
@@ -34,11 +42,65 @@
     </main>
 
     <footer>
-        <p>© 2019-2022 BlogBooks. All rights reserved.</p>
+        <p>© 2019-2022 %SiteTitle%. All rights reserved.</p>
     </footer>
+    <script src='https://cdn.jsdelivr.net/gh/rsms/markdown-wasm@v1.1.2/dist/markdown.js'></script>
     <script>
-        const siteTitle = "BlogBooks Community",
-              header = document.querySelector("header"),
+        const $ = {
+            setData(QueryWord, NewData) {
+                try {
+                    document.querySelector("body").innerHTML = document.querySelector("body").innerHTML.replaceAll(QueryWord, NewData);
+                } catch (error) {
+                    console.error("function: setData()\n", error);
+                }
+            },
+            getParam(name) {
+                var results = new RegExp("[?&]" + name.replace(/[\[\]]/g, "\\$&") + "(=([^&#]*)|&|#|$)").exec(window.location.href);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            },
+            paged(page) {
+                document.title = "Connecting..."
+                if (!page.startswith("/")) page = "/" + page;
+                fetch(`${config.baseURL}/${config.pagesDir}${page}.md`)
+                    .then(response => response.text())
+                    .then(data => {
+                        history.pushState(null, null, page);
+                        var meta = document.contents().filter(function() {
+                            return this.nodeType === document.COMMENT_NODE;
+                        });
+                        var data = JSON.parse(meta[0]);
+                        document.title = data.title + " By "+data.author+" | " + config.title;
+                        document.querySelector("main").innerHTML = markdown.parse(data);
+                    })
+                    .catch(e => {
+                        return this.paged("404");
+                    });
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            await markdown.ready;
+            // Set SiteTitle
+            $.setData("%SiteTitle%", config.title);
+
+            // Set menuBar
+            document.querySelectorAll(".linked").forEach(Element => {
+                Element.addEventListener("click", () => {
+                    $.paged(Element.data-paged);
+                })
+            })
+            
+            if (location.pathname == ("/" || null)) {
+                $.paged("/Home")
+            } else {
+                $.paged(location.pathname);
+            }
+        })
+
+        // ↓ old Sources
+        /* const header = document.querySelector("header"),
               openMenu = header.querySelector(".menu"),
               inMenu = header.querySelector(".inMenu"),
               logo = header.querySelector(".logo"),
@@ -112,7 +174,7 @@
                     break;
             }
             inMenu.style.display = "none";
-        }
+        } */
     </script>
 </body>
 </html>
