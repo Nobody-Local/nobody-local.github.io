@@ -61,6 +61,7 @@
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             },
             paged(page) {
+                String(page);
                 document.title = "Connecting..."
                 if (!page.toString().startswith("/")) page = "/" + page;
                 fetch(`${config.baseURL}/${config.pagesDir}${page}.md`)
@@ -79,6 +80,13 @@
                     });
             }
         }
+
+        openMenu.addEventListener("click", () => {
+            inMenu.style.display = "block";
+        });
+        closeMenu.addEventListener("click", () => {
+            inMenu.style.display = "none";
+        })
 
         window.addEventListener("DOMContentLoaded", () => {
             markdown.ready;
