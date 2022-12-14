@@ -62,7 +62,7 @@
             },
             paged(page) {
                 document.title = "Connecting..."
-                if (!page.startswith("/")) page = "/" + page;
+                if (!page.toString().startswith("/")) page = "/" + page;
                 fetch(`${config.baseURL}/${config.pagesDir}${page}.md`)
                     .then(response => response.text())
                     .then(data => {
