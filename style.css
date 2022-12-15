@@ -116,6 +116,7 @@ footer {
     top: 100vh;
 }
 body > footer {
+    z-index: 100;
     position: sticky;
     top: 100vh;
 }
