@@ -63,11 +63,10 @@
              * @param {string} name
              */
             paged(name) {
-                if (location.pathname == ("/404" || "404")) return;
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`)
                     .then(response => {
-                        if (response.status == 404) return paged("404");
+                        /* if (response.status == 404) return paged("404"); */
                         response.text();
                     })
                     .then(data => {
