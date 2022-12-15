@@ -1,5 +1,5 @@
 <script>
     fetch("/index.html").then(response => {
-        document.innerHTML = new DOMParser().parseFromString(text, "text/html");
+        document.body.innerHTML = new DOMParser().parseFromString(text, "text/html");
     })
 </script>
