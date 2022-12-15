@@ -77,13 +77,6 @@
             }
         }
 
-        document.querySelector("header").querySelector(".menu").addEventListener("click", () => {
-            document.querySelector("header").querySelector(".inMenu").style.display = "block";
-        });
-        document.querySelector("header").querySelector(".inMenu").querySelector(".close").addEventListener("click", () => {
-            document.querySelector("header").querySelector(".inMenu").style.display = "none";
-        })
-
         window.addEventListener("DOMContentLoaded", () => {
             markdown.ready;
             // Set SiteTitle
@@ -94,6 +87,13 @@
                 Element.addEventListener("click", () => {
                     $.paged(Element.getAttribute("data-paged"));
                 })
+            });
+
+            document.querySelector("header").querySelector(".menu").addEventListener("click", () => {
+                document.querySelector("header").querySelector(".inMenu").style.display = "block";
+            });
+            document.querySelector("header").querySelector(".inMenu").querySelector(".close").addEventListener("click", () => {
+                document.querySelector("header").querySelector(".inMenu").style.display = "none";
             })
             
             if (location.pathname == "/") {
