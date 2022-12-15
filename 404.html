@@ -63,18 +63,17 @@
              * @param {string} name
              */
             paged(name) {
+                if (location.pathname == ("/404" || "404")) return;
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`)
-                    .then(response => {
-                        /* if (response.status == 404) return paged("404"); */
-                        response.text();
-                    })
+                    .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
                         document.querySelector("main").innerHTML = markdown.parse(data);
-                    })/* .catch(error => {
-                        document.querySelector("main").innerHTML = "通信エラー";
-                    }); */
+                    })
+                    .catch(e => {
+                        return this.paged("404");
+                    });
             }
         }
 
