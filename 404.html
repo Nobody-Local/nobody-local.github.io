@@ -73,9 +73,9 @@
                     .then(data => {
                         history.pushState(null, null, name);
                         document.querySelector("main").innerHTML = markdown.parse(data);
-                    }).catch(error => {
+                    })/* .catch(error => {
                         document.querySelector("main").innerHTML = "通信エラー";
-                    });
+                    }); */
             }
         }
 
