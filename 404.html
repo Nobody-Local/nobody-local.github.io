@@ -67,7 +67,7 @@
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`,{method: 'GET'})
                     .then(response => {
-                        if (!response.ok) {return this.paged("404");}
+                        if (response.status.startswith(40)) return paged("404");
                         response.text();
                     })
                     .then(data => {
