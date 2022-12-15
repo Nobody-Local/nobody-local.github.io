@@ -111,15 +111,14 @@ footer {
     width: 100%;
     background-color: #fff;
     border-top: 1px solid rgb(185, 185, 185);
-    position: sticky;
     z-index: 100;
     top: 100vh;
 }
-body > footer {
+/* body > footer {
     z-index: 100;
     position: sticky;
     top: 100vh;
-}
+} */
 footer * {
     color: rgb(185, 185, 185);
 }
