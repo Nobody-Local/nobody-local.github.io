@@ -59,7 +59,7 @@ header div.menu {
 }
 
 header div.inMenu {
-    z-index: 100;
+    z-index: 110;
     position: fixed;
     left: 0;
     top: 0;
@@ -112,6 +112,7 @@ footer {
     background-color: #fff;
     border-top: 1px solid rgb(185, 185, 185);
     position: sticky;
+    z-index: 100;
     top: 100vh;
 }
 body > footer {
