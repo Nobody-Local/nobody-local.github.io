@@ -65,14 +65,16 @@
             paged(name) {
                 if (location.pathname == ("/404" || "404")) return;
                 document.title = "Connecting...";
-                fetch(`${location.origin}/pages/${name}.md`)
-                    .then(response => response.text())
+                fetch(`${location.origin}/pages/${name}.md`,{method: 'GET'})
+                    .then(response => {
+                        if (!response.ok) {return this.paged("404");}
+                        response.text();
+                    })
                     .then(data => {
                         history.pushState(null, null, name);
                         document.querySelector("main").innerHTML = markdown.parse(data);
-                    })
-                    .catch(e => {
-                        return this.paged("404");
+                    }).catch(error => {
+                        document.querySelector("main").innerHTML = "通信エラー";
                     });
             }
         }
