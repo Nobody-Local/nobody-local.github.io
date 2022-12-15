@@ -64,19 +64,12 @@
              */
             paged(name) {
                 if (location.pathname == ("/404" || "404")) return;
-                if (typeof name !== "String") name = String(name);
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`)
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
-                        /* data.match(/--!>$/);
-                        var meta = document.contents().filter(function() {
-                            return this.nodeType === document.COMMENT_NODE;
-                        });
-                        var data = JSON.parse(meta[0]);
-                        document.title = data.title + " By " + data.author +" | " + config.title;
-                        document.querySelector("main").innerHTML = markdown.parse(data); */
+                        document.querySelector("main").innerHTML = markdown.parse(data);
                     })
                     .catch(e => {
                         return this.paged("404");
