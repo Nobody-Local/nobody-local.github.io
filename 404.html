@@ -69,6 +69,7 @@
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
+                        document.querySelector("header").querySelector(".inMenu").style.display = "none";
                         document.querySelector("main").innerHTML = markdown.parse(data);
                     })
                     .catch(e => {
