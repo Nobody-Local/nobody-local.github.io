@@ -99,7 +99,7 @@
             if (location.pathname == "/") {
                 $.paged("Home");
             } else {
-                $.paged(location.pathname);
+                $.paged(location.pathname.substr(2));
             }
         })
     </script>
