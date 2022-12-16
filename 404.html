@@ -63,7 +63,7 @@
              * @param {string} name
              */
             paged(name) {
-                if (name.indexOf("Blog")) return location.href = location.origin + "Blog";
+                if (name.indexOf("Blog")) return location.href = location.origin + "/Blog";
                 if (location.pathname == ("/404" || "404")) return;
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`)
