@@ -70,6 +70,7 @@
                     .then(data => {
                         history.pushState(null, null, name);
                         document.querySelector("header").querySelector(".inMenu").style.display = "none";
+                        document.querySelector("main").innerHTML = data;
                         document.querySelector("main").innerHTML = markdown.parse(data);
                         document.title = document.querySelector("main").querySelector("h1").innerText + " | " + config.title;
                     })

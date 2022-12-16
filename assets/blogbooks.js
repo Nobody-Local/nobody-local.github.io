@@ -5,17 +5,15 @@ const BlogBooks = {
             .then(query => {
                 var $content;
                 query.forEach(data => {
-                    if (data.excerpt.protected == "true");
-                    else
-                        $content += `<div class="post" data-postID="${data.id}"><div class="title">${data.title.rendered}</div><div class="description">${data.excerpt.rendered}</div>`;
+                    if (data.excerpt.protected == "true") {} else {
+                        $content += `<div class="post" data-postID="${data.id}"><div class="title">${data.title.rendered}</div><div class="description">${data.excerpt.rendered}</div></div>`;
+                    }
                 });
                 document.querySelector("#posts").innerHTML = $content;
             })
             .catch(e => {
-                return () => {
-                    document.querySelector("main").innerHTML = e;
-                    console.error(e);
-                };
+                document.querySelector("main").innerHTML = e;
+                console.error(e);
             })
     },
     page(id = "") {
@@ -31,10 +29,8 @@ const BlogBooks = {
                 document.querySelector("#posts").innerHTML = $content;
             })
             .catch(e => {
-                return () => {
-                    document.querySelector("main").innerHTML = e;
-                    console.error(e);
-                };
+                document.querySelector("main").innerHTML = e;
+                console.error(e);
             })
     }
 }
@@ -52,7 +48,8 @@ function getParam(name, url) {
 // Start Line
 
 const target = getParam("page");
-if (target == null || "" || undefined)
-    return BlogBooks.posts();
-else
-    return BlogBooks.page(target);
+if (target == null || "" || undefined) {
+    BlogBooks.posts();
+} else {
+    BlogBooks.page(target);
+}
