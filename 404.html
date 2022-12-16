@@ -69,7 +69,7 @@
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
-                        if (location.pathname.startsWith("/Blog")) return () => {
+                        if (location.pathname.startsWith("/Blog" || "Blog")) return () => {
                             var el = document.createElement("script");
                             el.src = "/assets/blogbooks.js"
                             document.body.append(el);
