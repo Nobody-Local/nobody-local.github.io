@@ -46,10 +46,12 @@ function getParam(name, url) {
 }
 
 // Start Line
-
-const target = getParam("page");
-if (target == null || "" || undefined) {
-    BlogBooks.posts();
-} else {
-    BlogBooks.page(target);
+if (location.pathname.startsWith("/Blog")) {
+    var target = location.pathname.substr(5);
+    if (target == null || "" || undefined) {
+        BlogBooks.posts();
+    } else {
+        target = location.pathname.substr(6);
+        BlogBooks.page(target);
+    }
 }

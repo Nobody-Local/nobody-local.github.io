@@ -69,8 +69,8 @@
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
+                        if (location.pathname.startsWith("/Blog")) return document.body.append(document.createElement("script"));
                         document.querySelector("header").querySelector(".inMenu").style.display = "none";
-                        document.querySelector("main").innerHTML = data;
                         document.querySelector("main").innerHTML = markdown.parse(data);
                         document.title = document.querySelector("main").querySelector("h1").innerText + " | " + config.title;
                     })
