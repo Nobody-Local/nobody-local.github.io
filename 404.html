@@ -63,17 +63,13 @@
              * @param {string} name
              */
             paged(name) {
+                if (name.indexOf("Blog")) return location.href = location.origin + "Blog";
                 if (location.pathname == ("/404" || "404")) return;
                 document.title = "Connecting...";
                 fetch(`${location.origin}/pages/${name}.md`)
                     .then(response => response.text())
                     .then(data => {
                         history.pushState(null, null, name);
-                        if (location.pathname.startsWith("/Blog" || "Blog")) return () => {
-                            var el = document.createElement("script");
-                            el.src = "/assets/blogbooks.js"
-                            document.body.append(el);
-                        };
                         document.querySelector("header").querySelector(".inMenu").style.display = "none";
                         document.querySelector("main").innerHTML = markdown.parse(data);
                         document.title = document.querySelector("main").querySelector("h1").innerText + " | " + config.title;
