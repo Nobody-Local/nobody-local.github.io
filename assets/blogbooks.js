@@ -49,10 +49,10 @@ function getParam(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-    const target = getParam("page");
-    if (target == null || "" || undefined)
-        return BlogBooks.posts();
-    else
-        return BlogBooks.page(target);
-})
+// Start Line
+
+const target = getParam("page");
+if (target == null || "" || undefined)
+    return BlogBooks.posts();
+else
+    return BlogBooks.page(target);
