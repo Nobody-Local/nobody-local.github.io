@@ -6,7 +6,7 @@ function getParam(name) {
 }
 // これから解析するハッシュのリスト
 const passwordHashList = [
-  getParam(hash)
+  getParam("hash")
 ];
 
 // 使用する文字のリスト
