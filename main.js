@@ -20,7 +20,7 @@ const characters = [
   
 // 使用するスレッド数。CPUコア数*2 程度にしておく
 // 例えばCore i7なら4*2
-const MAX_THREADS = 12;
+const MAX_THREADS = 20;
   
 // 1スレッドあたり担当する頭文字の数
 // 頭文字で分割することでジョブを均等に分けることができる（はず……）
