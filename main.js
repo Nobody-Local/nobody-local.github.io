@@ -6,7 +6,7 @@ function getParam(name) {
 }
 // これから解析するハッシュのリスト
 const passwordHashList = [
-  getParam("hash")
+  dd8116ad40dfbd0e8624e2f73d8f4d00ff4f43631ee75e4cee39c6dcd1a3f1ae
 ];
 
 // 使用する文字のリスト
@@ -20,7 +20,7 @@ const characters = [
   
 // 使用するスレッド数。CPUコア数*2 程度にしておく
 // 例えばCore i7なら4*2
-const MAX_THREADS = 20;
+const MAX_THREADS = 12;
   
 // 1スレッドあたり担当する頭文字の数
 // 頭文字で分割することでジョブを均等に分けることができる（はず……）
